@@ -1,12 +1,13 @@
-// Design tokens — shared by CSS and Astro components via @apply / CSS variables.
-// Palette from the build spec (Section 5A):
-//   Limestone  #F5F2E9
-//   Deep botanical green  #183D2C
-//   Forest green  #294F3B
-//   Sage  #B7C5A5
-//   Sand  #D8B989
-//   Charcoal  #262923
-//   White  #FFFFFF
+/* Design tokens — shared by CSS and Astro components via @apply / CSS variables.
+   Palette from the build spec (Section 5A):
+     Limestone  #F5F2E9
+     Deep botanical green  #183D2C
+     Forest green  #294F3B
+     Sage  #B7C5A5
+     Sand  #D8B989
+     Charcoal  #262923
+     White  #FFFFFF
+*/
 
 :root {
   /* Colors */

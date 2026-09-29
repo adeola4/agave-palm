@@ -57,6 +57,16 @@ const leafShape = product.spineCharacteristics.includes('smooth') ? 'Smooth, fle
 const selectedVariant = variants.find(v => v.isAvailable) ?? variants[0];
 
 const businessName = import.meta.env['PUBLIC_BUSINESS_NAME'] || 'Palm & Agave Nursery';
+
+export function getStaticPaths() {
+  // In production, query Supabase for active agave products.
+  // For the static build, return paths for the demo products.
+  return [
+    { params: { slug: '1' } },
+    { params: { slug: '2' } },
+    { params: { slug: '3' } },
+  ];
+}
 ---
 
 <Layout
@@ -560,7 +570,9 @@ const businessName = import.meta.env['PUBLIC_BUSINESS_NAME'] || 'Palm & Agave Nu
     gap: var(--space-6);
   }
 
-  .product-header { }
+  .product-header {
+    margin-bottom: var(--space-5);
+  }
 
   .product-category-label {
     font-size: var(--text-xs);
@@ -957,7 +969,11 @@ const businessName = import.meta.env['PUBLIC_BUSINESS_NAME'] || 'Palm & Agave Nu
     border-bottom: 1px solid var(--color-border);
   }
 
-  .specs-list { }
+  .specs-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2) var(--space-6);
+  }
 
   .spec-row {
     display: flex;
@@ -985,7 +1001,10 @@ const businessName = import.meta.env['PUBLIC_BUSINESS_NAME'] || 'Palm & Agave Nu
     line-height: 1.5;
   }
 
-  .specs-list dd:first-line { }
+  .specs-list dd:first-line {
+    font-weight: var(--font-semibold);
+    color: var(--color-ink);
+  }
 
   /* ----- Description ----- */
   .description-section {

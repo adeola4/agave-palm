@@ -1,0 +1,838 @@
+---
+// src/pages/shop/palms/index.astro
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const products = [
+  {
+    id: '1',
+    sku: 'PL-TRB-7',
+    botanicalName: 'Trachycarpus fortunei',
+    commonName: 'Windmill Palm',
+    cultivar: null,
+    category: 'Cold-Hardy Palms',
+    image: 'https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?w=800&q=80',
+    price: 145,
+    containerSize: '7 gal',
+    overallHeight: '6 ft',
+    clearTrunkHeight: '3 ft',
+    trunkCharacteristics: 'Fiber-covered trunk',
+    sunExposure: 'Full sun to partial shade',
+    coldTolerance: '10°F (−12°C)',
+    fieldGrown: false,
+    status: 'active',
+    slug: 'trachycarpus-fortunei',
+  },
+  {
+    id: '2',
+    sku: 'PL-FAJ-15',
+    botanicalName: 'Butia capitata',
+    commonName: 'Pindo Palm',
+    cultivar: null,
+    category: 'Cold-Hardy Palms',
+    image: 'https://images.unsplash.com/photo-1596097635241-1f6b35e556b0?w=800&q=80',
+    price: 195,
+    containerSize: '15 gal',
+    overallHeight: '8 ft',
+    clearTrunkHeight: '4 ft',
+    trunkCharacteristics: 'Smooth grey trunk',
+    sunExposure: 'Full sun',
+    coldTolerance: '15°F (−9°C)',
+    fieldGrown: true,
+    status: 'active',
+    slug: 'butia-capitata',
+  },
+  {
+    id: '3',
+    sku: 'PL-WEL-25',
+    botanicalName: 'Wodyetia bifurcata',
+    commonName: 'Foxtail Palm',
+    cultivar: null,
+    category: 'Specimen Palms',
+    image: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&q=80',
+    price: 320,
+    containerSize: '25 gal',
+    overallHeight: '12 ft',
+    clearTrunkHeight: '6 ft',
+    trunkCharacteristics: 'Smooth grey-green trunk',
+    sunExposure: 'Full sun to partial shade',
+    coldTolerance: '25°F (−4°C)',
+    fieldGrown: false,
+    status: 'active',
+    slug: 'wodyetia-bifurcata',
+  },
+  {
+    id: '4',
+    sku: 'PL-SYB-15',
+    botanicalName: 'Syagrus romanzoffiana',
+    commonName: 'Queen Palm',
+    cultivar: null,
+    category: 'Landscape Palms',
+    image: 'https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?w=800&q=80',
+    price: 175,
+    containerSize: '15 gal',
+    overallHeight: '9 ft',
+    clearTrunkHeight: '4 ft',
+    trunkCharacteristics: 'Smooth ringed trunk',
+    sunExposure: 'Full sun to partial shade',
+    coldTolerance: '20°F (−6°C)',
+    fieldGrown: true,
+    status: 'active',
+    slug: 'syagrus-romanzoffiana',
+  },
+  {
+    id: '5',
+    sku: 'PL-PHO-25',
+    botanicalName: 'Phoenix canariensis',
+    commonName: 'Canary Island Date Palm',
+    cultivar: null,
+    category: 'Specimen Palms',
+    image: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&q=80',
+    price: 450,
+    containerSize: '25 gal',
+    overallHeight: '14 ft',
+    clearTrunkHeight: '8 ft',
+    trunkCharacteristics: 'Massive stout trunk',
+    sunExposure: 'Full sun',
+    coldTolerance: '15°F (−9°C)',
+    fieldGrown: true,
+    status: 'active',
+    slug: 'phoenix-canariensis',
+  },
+  {
+    id: '6',
+    sku: 'PL-ARE-15',
+    botanicalName: 'Areca catechu',
+    commonName: 'Betel Nut Palm',
+    cultivar: null,
+    category: 'Indoor/Container Palms',
+    image: 'https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?w=800&q=80',
+    price: 65,
+    containerSize: '15 gal',
+    overallHeight: '7 ft',
+    clearTrunkHeight: '2 ft',
+    trunkCharacteristics: 'Clustering stems',
+    sunExposure: 'Partial shade to filtered light',
+    coldTolerance: '30°F (−1°C)',
+    fieldGrown: false,
+    status: 'active',
+    slug: 'areca-catechu',
+  },
+  {
+    id: '7',
+    sku: 'PL-COC-10',
+    botanicalName: 'Cocos nucifera',
+    commonName: 'Coconut Palm',
+    cultivar: null,
+    category: 'Tropical Palms',
+    image: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&q=80',
+    price: 220,
+    containerSize: '10 gal',
+    overallHeight: '8 ft',
+    clearTrunkHeight: '3 ft',
+    trunkCharacteristics: 'Slim grey trunk',
+    sunExposure: 'Full sun',
+    coldTolerance: '30°F (−1°C)',
+    fieldGrown: false,
+    status: 'active',
+    slug: 'cocos-nucifera',
+  },
+  {
+    id: '8',
+    sku: 'PL-PAR-25',
+    botanicalName: 'Pritchardia martii',
+    commonName: 'Mart\'s Fan Palm',
+    cultivar: null,
+    category: 'Collector Palms',
+    image: 'https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?w=800&q=80',
+    price: 285,
+    containerSize: '25 gal',
+    overallHeight: '11 ft',
+    clearTrunkHeight: '5 ft',
+    trunkCharacteristics: 'Slender grey trunk',
+    sunExposure: 'Full sun to partial shade',
+    coldTolerance: '25°F (−4°C)',
+    fieldGrown: true,
+    status: 'active',
+    slug: 'pritchardia-martii',
+  },
+];
+
+const categories = [
+  { slug: 'cold-hardy', label: 'Cold-Hardy Palms', count: 2 },
+  { slug: 'specimen', label: 'Specimen Palms', count: 2 },
+  { slug: 'landscape', label: 'Landscape Palms', count: 1 },
+  { slug: 'tropical', label: 'Tropical Palms', count: 1 },
+  { slug: 'collector', label: 'Collector Palms', count: 1 },
+  { slug: 'container', label: 'Indoor/Container Palms', count: 1 },
+];
+
+const searchQuery = Astro.url.searchParams.get('q') ?? '';
+const categoryFilter = Astro.url.searchParams.get('category') ?? '';
+const sort = Astro.url.searchParams.get('sort') ?? 'name';
+
+const filtered = products.filter((p) => {
+  if (searchQuery && !p.botanicalName.toLowerCase().includes(searchQuery.toLowerCase()) && !(p.commonName?.toLowerCase().includes(searchQuery.toLowerCase()))) return false;
+  if (categoryFilter && p.category.toLowerCase().replace(/\s/g, '') !== categoryFilter.toLowerCase().replace(/\s/g, '')) return false;
+  return true;
+});
+
+const sorted = [...filtered].sort((a, b) => {
+  if (sort === 'price-asc') return a.price - b.price;
+  if (sort === 'price-desc') return b.price - a.price;
+  return a.botanicalName.localeCompare(b.botanicalName);
+});
+---
+
+<Layout
+  title="Palm Trees — Palm & Agave Nursery | Hillsborough County, FL"
+  description="Shop palm trees for Florida landscapes — cold-hardy palms, specimen palms, field-grown palms, and bulk palm orders. Hillsborough County, Tampa Bay."
+>
+  <Header cartCount={0} />
+
+  <div class="page-wrapper">
+    <!-- Category hero -->
+    <section class="category-hero">
+      <div class="category-hero-media">
+        <img
+          src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?w=1400&q=80"
+          alt="Palm trees in a Florida landscape"
+          width="1400"
+          height="500"
+          loading="eager"
+          class="category-hero-image"
+        />
+        <div class="category-hero-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="category-hero-content container">
+        <p class="category-eyebrow">Product Family B</p>
+        <h1 class="category-heading">Palm Trees</h1>
+        <p class="category-body">
+          Container-grown and field-grown palms — from cold-hardy landscape palms to mature specimen palms with clean trunks. Serving residential, commercial, and wholesale buyers across the Tampa Bay region.
+        </p>
+      </div>
+    </section>
+
+    <!-- Catalog body -->
+    <div class="catalog-body container">
+      <!-- Filters sidebar -->
+      <aside class="catalog-sidebar">
+        <div class="sidebar-sticky">
+          <h2 class="sidebar-heading">Categories</h2>
+          <nav class="category-nav" aria-label="Filter by category">
+            <ul class="category-list">
+              <li>
+                <a
+                  href={`/shop/palms`}
+                  class={`category-link${!categoryFilter ? ' category-link--active' : ''}`}
+                >
+                  All Palms
+                  <span class="category-count">{products.length}</span>
+                </a>
+              </li>
+              {categories.map((cat) => (
+                <li>
+                  <a
+                    href={`/shop/palms?category=${cat.slug}`}
+                    class={`category-link${categoryFilter === cat.slug ? ' category-link--active' : ''}`}
+                  >
+                    {cat.label}
+                    <span class="category-count">{cat.count}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <hr class="sidebar-divider" />
+
+          <h2 class="sidebar-heading">Filter</h2>
+          <form class="filter-form" method="get" action="/shop/palms">
+            <div class="filter-field">
+              <label class="filter-label" for="search">Search</label>
+              <input
+                id="search"
+                name="q"
+                type="search"
+                placeholder="Botanical or common name"
+                class="filter-input"
+                value={searchQuery}
+                aria-label="Search palms"
+              />
+            </div>
+
+            <div class="filter-field">
+              <label class="filter-label" for="min-price">Min Price</label>
+              <input
+                id="min-price"
+                name="min"
+                type="number"
+                min="0"
+                step="5"
+                class="filter-input"
+                placeholder="Min $"
+                aria-label="Minimum price"
+              />
+            </div>
+
+            <div class="filter-field">
+              <label class="filter-label" for="max-price">Max Price</label>
+              <input
+                id="max-price"
+                name="max"
+                type="number"
+                min="0"
+                step="5"
+                class="filter-input"
+                placeholder="Max $"
+                aria-label="Maximum price"
+              />
+            </div>
+
+            <div class="filter-field">
+              <label class="filter-label" for="sun">Sun Exposure</label>
+              <select id="sun" name="sun" class="filter-select" aria-label="Sun exposure">
+                <option value="">Any</option>
+                <option value="full-sun">Full Sun</option>
+                <option value="partial">Partial Shade</option>
+              </select>
+            </div>
+
+            <div class="filter-field">
+              <label class="filter-label" for="cold">Cold Tolerance</label>
+              <select id="cold" name="cold" class="filter-select" aria-label="Cold tolerance">
+                <option value="">Any</option>
+                <option value="10">10°F or better</option>
+                <option value="15">15°F or better</option>
+                <option value="20">20°F or better</option>
+                <option value="25">25°F or better</option>
+                <option value="30">30°F or better</option>
+              </select>
+            </div>
+
+            <div class="filter-field">
+              <label class="filter-label" for="size">Container Size</label>
+              <select id="size" name="size" class="filter-select" aria-label="Container size">
+                <option value="">Any</option>
+                <option value="10">10 gal</option>
+                <option value="15">15 gal</option>
+                <option value="25">25 gal</option>
+              </select>
+            </div>
+
+            <div class="filter-field">
+              <label class="filter-label">Growth Type</label>
+              <div class="checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="field-grown" value="yes" class="checkbox-input" />
+                  <span>Field-Grown</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="container-grown" value="yes" class="checkbox-input" />
+                  <span>Container-Grown</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="filter-actions">
+              <button type="submit" class="btn btn-primary">Apply Filters</button>
+              <a href="/shop/palms" class="btn btn-outline">Clear</a>
+            </div>
+          </form>
+
+          <hr class="sidebar-divider" />
+
+          <h2 class="sidebar-heading">Sort By</h2>
+          <form class="sort-form" method="get" action="/shop/palms">
+            <label class="sort-label">
+              <input type="radio" name="sort" value="name" class="sort-radio" checked={sort === 'name' || !sort} />
+              Name (A–Z)
+            </label>
+            <label class="sort-label">
+              <input type="radio" name="sort" value="price-asc" class="sort-radio" checked={sort === 'price-asc'} />
+              Price: Low to High
+            </label>
+            <label class="sort-label">
+              <input type="radio" name="sort" value="price-desc" class="sort-radio" checked={sort === 'price-desc'} />
+              Price: High to Low
+            </label>
+          </form>
+        </div>
+      </aside>
+
+      <!-- Product grid -->
+      <main class="catalog-main">
+        <header class="catalog-header">
+          <p class="results-count">{sorted.length} palm{sorted.length !== 1 ? 's' : ''}</p>
+          <div class="catalog-actions">
+            <span class="view-label">View:</span>
+            <button class="view-toggle view-toggle--grid {active: true}" aria-label="Grid view">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                <rect x="14" y="14" width="7" height="7" rx="1"/>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        {sorted.length > 0 ? (
+          <div class="product-grid product-grid--palms">
+            {sorted.map((product) => (
+              <article class="product-card product-card--palm">
+                <a href={`/shop/palms/${product.slug}`} class="product-image-link" tabindex="-1" aria-hidden="true">
+                  <div class="product-image-wrap">
+                    <img
+                      src={product.image}
+                      alt={`${product.botanicalName}${product.commonName ? ` — ${product.commonName}` : ''}`}
+                      width="700"
+                      height="500"
+                      loading="lazy"
+                      class="product-image"
+                    />
+                    {product.status === 'sold_out' && (
+                      <span class="product-badge">Sold Out</span>
+                    )}
+                    <div class="product-category-tag">{product.category}</div>
+                  </div>
+                </a>
+                <div class="product-info">
+                  <a href={`/shop/palms/${product.slug}`} class="product-title-link">
+                    <h3 class="product-name">{product.botanicalName}</h3>
+                    {product.commonName && <p class="product-common">{product.commonName}</p>}
+                  </a>
+                  <div class="product-specs">
+                    <span class="product-spec"><span class="spec-label">Container</span> {product.containerSize}</span>
+                    <span class="product-spec"><span class="spec-label">Overall Height</span> {product.overallHeight}</span>
+                    {product.clearTrunkHeight && (
+                      <span class="product-spec"><span class="spec-label">Clear Trunk</span> {product.clearTrunkHeight}</span>
+                    )}
+                  </div>
+                  <div class="product-attributes">
+                    <span class="attr">{product.sunExposure}</span>
+                    <span class="attr">Tolerates {product.coldTolerance}</span>
+                    {product.fieldGrown && <span class="attr attr--field">Field-Grown</span>}
+                  </div>
+                  <div class="product-footer">
+                    <span class="product-price">\${product.price}</span>
+                    <a href={`/shop/palms/${product.slug}`} class="btn btn-sm btn-primary">View Palm</a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div class="empty-state">
+            <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"/>
+              <path d="m21 21-4.3-4.3"/>
+            </svg>
+            <h3 class="empty-title">No palms match your filters</h3>
+            <p class="empty-body">Try a different search or clear the filters to see all available palm trees.</p>
+            <a href="/shop/palms" class="btn btn-primary">Clear Filters</a>
+          </div>
+        )}
+      </main>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-wrapper {
+    min-height: 60vh;
+    padding-bottom: var(--space-16);
+  }
+
+  .category-hero {
+    position: relative;
+    padding: var(--space-16) 0;
+    overflow: hidden;
+  }
+
+  .category-hero-media {
+    position: absolute;
+    inset: 0;
+  }
+
+  .category-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  .category-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(38, 41, 35, 0.92) 0%,
+      rgba(38, 41, 35, 0.5) 60%,
+      rgba(38, 41, 35, 0.15) 100%
+    );
+  }
+
+  .category-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    padding: var(--space-16) 0;
+  }
+
+  @media (max-width: 640px) {
+    .category-hero { padding: var(--space-12) 0; }
+    .category-hero-content { padding: var(--space-12) 0; }
+  }
+
+  .category-eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-sage);
+    margin-bottom: var(--space-3);
+  }
+
+  .category-heading {
+    font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+    color: var(--color-white);
+    margin-bottom: var(--space-4);
+    line-height: 1.05;
+  }
+
+  .category-body {
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    color: rgba(245, 242, 233, 0.82);
+    max-width: 520px;
+  }
+
+  /* Catalog layout (shared with agaves) */
+  .catalog-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    padding-top: var(--space-10);
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .catalog-body { grid-template-columns: 280px 1fr; gap: var(--space-12); }
+  }
+
+  .sidebar-sticky { position: sticky; top: calc(68px + var(--space-6)); }
+
+  .sidebar-heading {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-sage);
+    margin-bottom: var(--space-4);
+  }
+
+  .category-list { display: flex; flex-direction: column; gap: var(--space-1); }
+
+  .category-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .category-link:hover,
+  .category-link:focus-visible {
+    background-color: rgba(38, 41, 35, 0.06);
+    color: var(--color-text-primary);
+  }
+
+  .category-link--active {
+    background-color: rgba(41, 79, 59, 0.1);
+    color: var(--color-green-deep);
+    font-weight: var(--font-semibold);
+  }
+
+  .category-count {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    background-color: var(--color-limestone);
+    padding: 1px var(--space-2);
+    border-radius: var(--radius-full);
+  }
+
+  .sidebar-divider { border: none; border-top: 1px solid var(--color-border); margin: var(--space-6) 0; }
+
+  .filter-form, .sort-form { display: flex; flex-direction: column; gap: var(--space-4); }
+
+  .filter-field { display: flex; flex-direction: column; gap: var(--space-2); }
+
+  .filter-label {
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+  }
+
+  .filter-input, .filter-select {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    font-size: var(--text-sm);
+    transition: border-color var(--transition-fast);
+  }
+
+  .filter-input:focus, .filter-select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .filter-input::placeholder { color: var(--color-text-muted); }
+
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+  }
+
+  .checkbox-input {
+    accent-color: var(--color-green-deep);
+    width: 14px;
+    height: 14px;
+  }
+
+  .filter-actions { display: flex; gap: var(--space-2); margin-top: var(--space-2); }
+
+  .sort-form { display: flex; flex-direction: column; gap: var(--space-3); }
+
+  .sort-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+  }
+
+  .sort-radio { accent-color: var(--color-green-deep); width: 14px; height: 14px; }
+
+  .catalog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .results-count { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+  .catalog-actions { display: flex; align-items: center; gap: var(--space-3); }
+
+  .view-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    transition: all var(--transition-fast);
+    background-color: var(--color-surface);
+  }
+
+  .view-toggle:hover,
+  .view-toggle:focus-visible {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .view-toggle svg { width: 16px; height: 16px; }
+
+  .product-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-6); }
+
+  @media (min-width: 640px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 900px) {
+    .product-grid--palms { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .product-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+  }
+
+  .product-card:hover,
+  .product-card:focus-within {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .product-image-link { display: block; text-decoration: none; }
+
+  .product-image-wrap {
+    position: relative;
+    aspect-ratio: 5 / 3;
+    overflow: hidden;
+    background-color: var(--color-limestone);
+  }
+
+  .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .product-card:hover .product-image,
+  .product-card:focus-within .product-image {
+    transform: scale(1.04);
+  }
+
+  .product-badge {
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    border-radius: var(--radius-full);
+    background-color: var(--color-charcoal);
+    color: var(--color-white);
+  }
+
+  .product-category-tag {
+    position: absolute;
+    bottom: var(--space-3);
+    left: var(--space-3);
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-full);
+    background-color: rgba(24, 61, 44, 0.85);
+    color: var(--color-white);
+    backdrop-filter: blur(4px);
+  }
+
+  .product-info { padding: var(--space-5); }
+
+  .product-title-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+
+  .product-name {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--color-green-deep);
+    line-height: 1.3;
+    margin-bottom: var(--space-1);
+  }
+
+  .product-common { font-size: var(--text-sm); color: var(--color-text-secondary); }
+
+  .product-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  .spec-label { font-weight: var(--font-medium); color: var(--color-text-secondary); }
+
+  .product-attributes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .attr {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    padding: 2px var(--space-2);
+    background-color: var(--color-limestone);
+    border-radius: var(--radius-sm);
+  }
+
+  .attr--field {
+    background-color: rgba(41, 79, 59, 0.12);
+    color: var(--color-green-forest);
+  }
+
+  .product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .product-price {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--color-green-deep);
+    font-family: var(--font-serif);
+  }
+
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-20) var(--space-8);
+    background-color: var(--color-limestone);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  .empty-icon { width: 48px; height: 48px; color: var(--color-text-muted); margin-bottom: var(--space-5); }
+
+  .empty-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    color: var(--color-green-deep);
+    margin-bottom: var(--space-2);
+  }
+
+  .empty-body {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-6);
+    max-width: 320px;
+  }
+</style>

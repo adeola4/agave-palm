@@ -1,0 +1,990 @@
+---
+// src/pages/wholesale/index.astro
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const businessName = import.meta.env['PUBLIC_BUSINESS_NAME'] || 'Palm & Agave Nursery';
+---
+
+<Layout
+  title={`Wholesale & Trade — ${businessName}`}
+  description="Wholesale agave and palm tree supply for landscape contractors, architects, designers, and commercial projects in Hillsborough County and the Tampa Bay region. Trade accounts and bulk orders."
+>
+  <Header cartCount={0} />
+
+  <div class="wholesale-page">
+    <!-- Hero -->
+    <section class="wholesale-hero">
+      <div class="wholesale-hero-media">
+        <img
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80"
+          alt="Commercial landscape project with palms and agaves"
+          width="1600"
+          height="600"
+          loading="eager"
+          class="wholesale-hero-image"
+        />
+        <div class="wholesale-hero-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="wholesale-hero-content container">
+        <p class="wholesale-eyebrow">For Professional Buyers</p>
+        <h1 class="wholesale-heading">Wholesale &amp; Trade</h1>
+        <p class="wholesale-body">
+          Agave and palm supply for landscape contractors, architects, designers, commercial property owners, and developers working across Hillsborough County and the wider Tampa Bay region.
+        </p>
+        <div class="wholesale-cta">
+          <a href="#account" class="btn btn-primary">Apply for a Trade Account</a>
+          <a href="/wholesale/bulk-quote" class="btn btn-secondary">Request a Bulk Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="wholesale-body container">
+      <div class="wholesale-grid">
+        <!-- What we supply -->
+        <section class="wholesale-section" id="supply" aria-labelledby="supply-heading">
+          <div class="wholesale-section-header">
+            <p class="section-eyebrow">What We Supply</p>
+            <h2 id="supply-heading" class="section-heading">Agaves and palms for real projects</h2>
+            <p class="section-body">
+              We grow and stock both product families with the scale and consistency that professional buyers need. From container stock for multiple residential installs to field-grown specimen palms for commercial landscapes.
+            </p>
+          </div>
+
+          <div class="supply-grid">
+            <div class="supply-card">
+              <div class="supply-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/>
+                  <path d="M8.5 8.5 12 12l3.5-3.5"/>
+                  <path d="M20 12H4"/>
+                </svg>
+              </div>
+              <h3 class="supply-title">Agave Plants</h3>
+              <p class="supply-body">
+                Architectural, compact, specimen, and landscape-ready agaves in a range of container sizes. Suitable for residential installs, commercial landscapes, xeriscaping, and collector projects.
+              </p>
+              <ul class="supply-list">
+                <li>Container-grown agaves — 10 gal, 15 gal, and larger</li>
+                <li>Architectural and specimen agaves for feature planting</li>
+                <li>Compact agaves for contemporary and modern designs</li>
+                <li>Consistent stock for repeat ordering</li>
+              </ul>
+            </div>
+
+            <div class="supply-card">
+              <div class="supply-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14.5 12.5L19 8M5 19l4-4 4 4M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <h3 class="supply-title">Palm Trees</h3>
+              <p class="supply-body">
+                Container-grown and field-grown palms from cold-hardy landscape palms to large specimen palms with clear trunks. Bulk palm orders available for projects of any scale.
+              </p>
+              <ul class="supply-list">
+                <li>Cold-hardy landscape palms for Tampa Bay conditions</li>
+                <li>Field-grown specimen palms with clear trunks</li>
+                <li>Bulk palm orders — multiple plants, same species</li>
+                <li>Palm sourcing for planned commercial landscapes</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Account tiers -->
+        <section class="wholesale-section" id="accounts" aria-labelledby="accounts-heading">
+          <div class="wholesale-section-header">
+            <p class="section-eyebrow">Account Types</p>
+            <h2 id="accounts-heading" class="section-heading">The right access for your work</h2>
+            <p class="section-body">
+              We offer different levels of access depending on the kind of work you do and the volume you need. Trade pricing is approved by our team and applied to qualifying accounts.
+            </p>
+          </div>
+
+          <div class="accounts-grid">
+            <div class="account-card account-card--residential">
+              <h3 class="account-title">Homeowner</h3>
+              <p class="account-subtitle">Individual purchases</p>
+              <p class="account-body">
+                Shop the retail catalog online. Select your plants, choose pickup or delivery, and complete your order. No account approval required.
+              </p>
+              <a href="/shop/agaves" class="account-link">Shop Retail</a>
+            </div>
+
+            <div class="account-card account-card--trade">
+              <h3 class="account-title">Trade Account</h3>
+              <p class="account-subtitle">Contractors &amp; Designers</p>
+              <p class="account-body">
+                For landscape contractors, landscape architects, and designers who source plants regularly for projects. Trade pricing may be available after account review.
+              </p>
+              <div class="account-features">
+                <span class="feature">Trade pricing on eligible plants</span>
+                <span class="feature">Priority stock availability</span>
+                <span class="feature">Project quote support</span>
+                <span class="feature">Bulk ordering</span>
+              </div>
+              <a href="#apply" class="account-link">Apply for Trade Account</a>
+            </div>
+
+            <div class="account-card account-card--wholesale">
+              <h3 class="account-title">Wholesale</h3>
+              <p class="account-subtitle">High-Volume Buyers</p>
+              <p class="account-body">
+                For developers, commercial property owners, and high-volume buyers with ongoing or large-scale plant requirements. Wholesale terms are set per account.
+              </p>
+              <div class="account-features">
+                <span class="feature">Volume-based pricing</span>
+                <span class="feature">Project sourcing</span>
+                <span class="feature">Delivery coordination</span>
+                <span class="feature">Dedicated account support</span>
+              </div>
+              <a href="/wholesale/bulk-quote" class="account-link">Request Wholesale Access</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- How it works -->
+        <section class="wholesale-section" id="how-it-works" aria-labelledby="how-heading">
+          <div class="wholesale-section-header">
+            <p class="section-eyebrow">How It Works</p>
+            <h2 id="how-heading" class="section-heading">From inquiry to delivery</h2>
+            <p class="section-body">
+              We keep the process straightforward. Submit your inquiry, we review it, and we work with you on availability, pricing, and delivery before anything is committed.
+            </p>
+          </div>
+
+          <ol class="steps-list steps-list--numbered">
+            <li class="step-item">
+              <span class="step-number">01</span>
+              <div class="step-body">
+                <h3 class="step-title">Submit your inquiry</h3>
+                <p class="step-body-text">
+                  Tell us what you need — species, sizes, quantities, delivery location, and timing. Use the bulk quote form or contact us directly for project inquiries.
+                </p>
+              </div>
+            </li>
+            <li class="step-item">
+              <span class="step-number">02</span>
+              <div class="step-body">
+                <h3 class="step-title">We review your request</h3>
+                <p class="step-body-text">
+                  We check availability, confirm species suitability for your location, and prepare a quote if needed. For trade accounts, we review your application and may request additional information.
+                </p>
+              </div>
+            </li>
+            <li class="step-item">
+              <span class="step-number">03</span>
+              <div class="step-body">
+                <h3 class="step-title">We confirm availability and pricing</h3>
+                <p class="step-body-text">
+                  You receive a quote or order confirmation with plant details, quantities, prices, and delivery or pickup arrangements. Nothing is final until we confirm with you.
+                </p>
+              </div>
+            </li>
+            <li class="step-item">
+              <span class="step-number">04</span>
+              <div class="step-body">
+                <h3 class="step-title">Delivery or pickup</h3>
+                <p class="step-body-text">
+                  We coordinate delivery or you pick up at the nursery. For large specimens or bulk orders, we arrange freight or specialized transport and confirm access requirements in advance.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Apply for account -->
+        <section class="wholesale-section" id="apply" aria-labelledby="apply-heading">
+          <div class="wholesale-section-header">
+            <p class="section-eyebrow">Get Started</p>
+            <h2 id="apply-heading" class="section-heading">Apply for a trade account</h2>
+            <p class="section-body">
+              Tell us about your business and the kind of work you do. We review every application and follow up directly.
+            </p>
+          </div>
+
+          <div class="apply-grid">
+            <div class="apply-info">
+              <div class="apply-info-card">
+                <h3 class="apply-info-title">Before you apply</h3>
+                <ul class="apply-list">
+                  <li>Confirm you work in landscape construction, design, development, or commercial property management</li>
+                  <li>Be ready to share your business name and a point of contact</li>
+                  <li>Think about the kinds of projects you typically work on</li>
+                  <li>Know whether you need retail, trade, or wholesale access</li>
+                </ul>
+              </div>
+              <div class="apply-info-card">
+                <h3 class="apply-info-title">What happens next</h3>
+                <ul class="apply-list">
+                  <li>We review your application manually</li>
+                  <li>We may contact you for additional details</li>
+                  <li>Approved accounts receive trade pricing where applicable</li>
+                  <li>New accounts start with standard availability and can grow into priority access</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="apply-form-card">
+              <h3 class="apply-form-title">Trade Account Application</h3>
+              <form class="apply-form" novalidate>
+                <div class="form-field">
+                  <label class="form-label" for="business-name">Business Name <span class="form-optional">(if applicable)</span></label>
+                  <input id="business-name" type="text" class="form-input" placeholder="Your company or business name" />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="full-name">Full Name <span class="form-required">*</span></label>
+                  <input id="full-name" type="text" class="form-input" placeholder="Your full name" required />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="email">Email Address <span class="form-required">*</span></label>
+                  <input id="email" type="email" class="form-input" placeholder="you@company.com" required />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="phone">Phone Number</label>
+                  <input id="phone" type="tel" class="form-input" placeholder="(813) 555-0100" />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="company-type">What best describes your work? <span class="form-required">*</span></label>
+                  <select id="company-type" class="form-select" required>
+                    <option value="">Select one...</option>
+                    <option value="contractor">Landscape Contractor</option>
+                    <option value="architect">Landscape Architect / Designer</option>
+                    <option value="developer">Developer / Builder</option>
+                    <option value="commercial">Commercial Property Owner / Manager</option>
+                    <option value="retail">Retail / Hospitality / Restaurant</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="project-types">Typical project types</label>
+                  <div class="checkbox-group">
+                    <label class="checkbox-label"><input type="checkbox" name="project-types" value="residential" /><span>Residential landscapes</span></label>
+                    <label class="checkbox-label"><input type="checkbox" name="project-types" value="commercial" /><span>Commercial landscapes</span></label>
+                    <label class="checkbox-label"><input type="checkbox" name="project-types" value="municipal" /><span>Municipal / public</span></label>
+                    <label class="checkbox-label"><input type="checkbox" name="project-types" value="collector" /><span>Collector / specialty</span></label>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="message">Tell us about your work <span class="form-optional">(optional)</span></label>
+                  <textarea id="message" class="form-textarea" rows="4" placeholder="A brief description of the kind of projects you work on and what you're looking for..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Submit Application</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="wholesale-section" id="faq" aria-labelledby="faq-heading">
+          <div class="wholesale-section-header">
+            <p class="section-eyebrow">Questions</p>
+            <h2 id="faq-heading" class="section-heading">Wholesale &amp; Trade FAQ</h2>
+          </div>
+
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Do you offer trade pricing?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m18 15-6-6-6 6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>Trade pricing may be available for approved trade accounts. Pricing depends on the plants, quantities, and account type. We review each application and set terms individually — there is no fixed public trade discount table.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Can I buy bulk palms or agaves for a project?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m18 15-6-6-6 6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>Yes. Bulk orders are welcome. Submit a bulk quote request with the species, sizes, quantities, and delivery details, and we will confirm availability and pricing. Large orders may require a deposit or staged delivery depending on the project.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Do you deliver outside Hillsborough County?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m18 15-6-6-6 6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>We deliver within Hillsborough County by default. Regional delivery to Pasco, Pinellas, Polk, Manatee, Hernando, and Sarasota counties is available on request. Large specimens and bulk orders may require freight or specialized transport — we will confirm details and costs before you commit.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>How long does a trade account application take?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m18 15-6-6-6 6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>We review applications manually and follow up directly. Most applications are reviewed within a few business days. If we need more information, we will contact you before making a decision.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Do you do project planting or installation?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m18 15-6-6-6 6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>Installation services depend on what the business actually offers. If planting or installation is offered, we will confirm availability and project requirements when you submit your inquiry. Do not assume installation is available without confirming directly.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="wholesale-cta-section">
+          <div class="wholesale-cta-content">
+            <h2 class="wholesale-cta-title">Ready to source plants for your project?</h2>
+            <p class="wholesale-cta-body">
+              Submit a bulk quote or project inquiry and we will work with you on availability, pricing, and delivery.
+            </p>
+            <div class="wholesale-cta-links">
+              <a href="/wholesale/bulk-quote" class="btn btn-primary btn-lg">Request a Bulk Quote</a>
+              <a href="/contact" class="btn btn-outline btn-lg">Contact Us Directly</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<script>
+  // FAQ accordion
+  document.addEventListener('DOMContentLoaded', () => {
+    const questions = document.querySelectorAll('.faq-question');
+    questions.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+
+        // Close others
+        document.querySelectorAll('.faq-item').forEach(other => {
+          if (other !== item) {
+            other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            other.querySelector('.faq-answer').classList.remove('is-open');
+          }
+        });
+
+        btn.setAttribute('aria-expanded', String(!expanded));
+        answer.classList.toggle('is-open');
+      });
+    });
+  });
+</script>
+
+<style>
+  .wholesale-page {
+    padding-bottom: var(--space-16);
+  }
+
+  /* ----- Hero ----- */
+  .wholesale-hero {
+    position: relative;
+    padding: var(--space-16) 0;
+    overflow: hidden;
+  }
+
+  .wholesale-hero-media {
+    position: absolute;
+    inset: 0;
+  }
+
+  .wholesale-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  .wholesale-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(24, 61, 44, 0.92) 0%,
+      rgba(24, 61, 44, 0.55) 50%,
+      rgba(24, 61, 44, 0.2) 100%
+    );
+  }
+
+  .wholesale-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    padding: var(--space-16) 0;
+  }
+
+  @media (max-width: 640px) {
+    .wholesale-hero { padding: var(--space-12) 0; }
+    .wholesale-hero-content { padding: var(--space-12) 0; }
+  }
+
+  .wholesale-eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-sage);
+    margin-bottom: var(--space-3);
+  }
+
+  .wholesale-heading {
+    font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+    color: var(--color-white);
+    margin-bottom: var(--space-5);
+    line-height: 1.05;
+  }
+
+  .wholesale-body {
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    color: rgba(245, 242, 233, 0.82);
+    margin-bottom: var(--space-8);
+    max-width: 560px;
+  }
+
+  .wholesale-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .wholesale-cta .btn-secondary {
+    border-color: rgba(245, 242, 233, 0.4);
+  }
+
+  .wholesale-cta .btn-secondary:hover,
+  .wholesale-cta .btn-secondary:focus-visible {
+    background-color: rgba(245, 242, 233, 0.12);
+    border-color: rgba(245, 242, 233, 0.6);
+  }
+
+  /* ----- Body ----- */
+  .wholesale-body {
+    padding-top: var(--space-12);
+  }
+
+  .wholesale-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+
+  .wholesale-section-header {
+    max-width: 640px;
+    margin-bottom: var(--space-10);
+  }
+
+  .section-eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-sage);
+    margin-bottom: var(--space-3);
+  }
+
+  .section-heading {
+    font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+    color: var(--color-green-deep);
+    margin-bottom: var(--space-4);
+    line-height: 1.15;
+  }
+
+  .section-body {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+
+  /* ----- Supply grid ----- */
+  .supply-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .supply-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .supply-card {
+    padding: var(--space-6);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .supply-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background-color: rgba(41, 79, 59, 0.1);
+    color: var(--color-green-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+  }
+
+  .supply-icon svg { width: 22px; height: 22px; }
+
+  .supply-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    color: var(--color-green-deep);
+    margin-bottom: var(--space-3);
+  }
+
+  .supply-body {
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+
+  .supply-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .supply-list li {
+    font-size: var(--text-sm);
+    color: var(--color-text-primary);
+    padding-left: var(--space-5);
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .supply-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-sage);
+  }
+
+  /* ----- Accounts ----- */
+  .accounts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .accounts-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .account-card {
+    padding: var(--space-6);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow var(--transition-base), transform var(--transition-base), border-color var(--transition-base);
+    position: relative;
+  }
+
+  .account-card:hover,
+  .account-card:focus-within {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: var(--color-sage);
+  }
+
+  .account-card--trade {
+    border-color: rgba(41, 79, 59, 0.3);
+  }
+
+  .account-card--wholesale {
+    border-color: rgba(41, 79, 59, 0.3);
+    background-color: rgba(24, 61, 44, 0.02);
+  }
+
+  .account-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    color: var(--color-green-deep);
+    margin-bottom: var(--space-1);
+  }
+
+  .account-subtitle {
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-sage);
+    margin-bottom: var(--space-3);
+  }
+
+  .account-body {
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  .account-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-top: auto;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .feature {
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    padding-left: var(--space-4);
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .feature::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-sage);
+  }
+
+  .account-link {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-green-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-green-deep);
+    padding-bottom: 1px;
+    align-self: flex-start;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .account-card:hover .account-link,
+  .account-card:focus-within .account-link {
+    color: var(--color-charcoal);
+    border-color: var(--color-charcoal);
+  }
+
+  /* ----- Steps ----- */
+  .steps-list--numbered {
+    list-style: none;
+    counter-reset: step-counter;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 768px) {
+    .steps-list--numbered {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+  }
+
+  .step-item {
+    counter-increment: step-counter;
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-green-deep);
+    color: var(--color-white);
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+  }
+
+  .step-body { flex: 1; }
+
+  .step-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    color: var(--color-green-deep);
+    margin-bottom: var(--space-2);
+  }
+
+  .step-body-text {
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* ----- Apply ----- */
+  .apply-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .apply-grid { grid-template-columns: 1fr 2fr; gap: var(--space-12); }
+  }
+
+  .apply-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .apply-info-card {
+    padding: var(--space-5);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .apply-info-title {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-sage);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .apply-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .apply-list li {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    padding-left: var(--space-4);
+    position: relative;
+  }
+
+  .apply-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-sage);
+  }
+
+  .apply-form-card {
+    padding: var(--space-6);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .apply-form-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    color: var(--color-green-deep);
+    margin-bottom: var(--space-5);
+  }
+
+  .apply-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .form-label {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+  }
+
+  .form-optional {
+    font-weight: var(--font-normal);
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+  }
+
+  .form-required {
+    color: var(--color-danger);
+    font-weight: var(--font-semibold);
+    font-size: var(--text-xs);
+    margin-left: var(--space-1);
+  }
+
+  .form-input, .form-select, .form-textarea {
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-base);
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(24, 61, 44, 0.12);
+  }
+
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .form-textarea { resize: vertical; min-height: 100px; }
+
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+  }
+
+  .checkbox-input { accent-color: var(--color-green-deep); width: 14px; height: 14px; }
+
+  /* ----- FAQ ----- */
+  .faq-list {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-5) var(--space-2);
+    text-align: left;
+    font-family: var(--font-serif);
+    font-size: var(--text-base);
+    color: var(--color-text-primary);
+    transition: background-color var(--transition-fast);
+  }
+
+  .faq-question:hover {
+    background-color: var(--color-limestone);
+  }
+
+  .faq-question:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+    border-radius: var(--radius-sm);
+  }
+
+  .faq-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+  }
+
+  .faq-item.is-open .faq-icon {
+    transform: rotate(180deg);
+    color: var(--color-green-deep);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-base), padding var(--transition-base);
+  }
+
+  .faq-answer.is-open {
+    max-height: 400px;
+    padding: var(--space-4) var(--space-2) var(--space-5);
+  }
+
+  .faq-answer p {
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* ----- CTA ----- */
+  .wholesale-cta-section {
+    margin-top: var(--space-12);
+    padding: var(--space-12) 0;
+    background-color: var(--color-green-deep);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+
+  .wholesale-cta-title {
+    font-family: var(--font-serif);
+    font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+    color: var(--color-white);
+    margin-bottom: var(--space-4);
+  }
+
+  .wholesale-cta-body {
+    font-size: var(--text-base);
+    color: rgba(245, 242, 233, 0.8);
+    margin-bottom: var(--space-6);
+    max-width: 480px;
+    margin-inline: auto;
+  }
+
+  .wholesale-cta-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+  }
+
+  .wholesale-cta-links .btn-secondary {
+    border-color: rgba(245, 242, 233, 0.4);
+  }
+
+  .wholesale-cta-links .btn-secondary:hover,
+  .wholesale-cta-links .btn-secondary:focus-visible {
+    background-color: rgba(245, 242, 233, 0.12);
+  }
+</style>

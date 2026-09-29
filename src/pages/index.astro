@@ -1,0 +1,1186 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const businessName = import.meta.env['PUBLIC_BUSINESS_NAME'] || 'Palm & Agave Nursery';
+
+// Placeholder featured products — replaces with DB query once Supabase is wired
+const featuredAgaves = [
+  {
+    id: '1',
+    sku: 'AG-VITA-15',
+    botanicalName: 'Agave victoriae-reginae',
+    commonName: 'Queen Victoria Agave',
+    cultivar: null,
+    image: 'https://images.unsplash.com/photo-1511690656952-34342bb7c2f1?w=800&q=80',
+    price: 89,
+    containerSize: '15 gal',
+    rosetteDiameter: '14 in',
+    status: 'active',
+  },
+  {
+    id: '2',
+    sku: 'AG-ART-10',
+    botanicalName: 'Agave articulata',
+    commonName: 'Cabbage Head Agave',
+    cultivar: null,
+    image: 'https://images.unsplash.com/photo-1459411552884-84c709774d2f?w=800&q=80',
+    price: 54,
+    containerSize: '10 gal',
+    rosetteDiameter: '10 in',
+    status: 'active',
+  },
+  {
+    id: '3',
+    sku: 'AG-PAR-15',
+    botanicalName: 'Agave parryi',
+    commonName: 'Parry\'s Agave',
+    cultivar: 'truncata',
+    image: 'https://images.unsplash.com/photo-1506183922908-2e57e7f61cf3?w=800&q=80',
+    price: 68,
+    containerSize: '15 gal',
+    rosetteDiameter: '18 in',
+    status: 'active',
+  },
+];
+
+const featuredPalms = [
+  {
+    id: '4',
+    sku: 'PL-TRB-7',
+    botanicalName: 'Trachycarpus fortunei',
+    commonName: 'Windmill Palm',
+    cultivar: null,
+    image: 'https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?w=800&q=80',
+    price: 145,
+    containerSize: '7 gal',
+    overallHeight: '6 ft',
+    clearTrunkHeight: '3 ft',
+    status: 'active',
+  },
+  {
+    id: '5',
+    sku: 'PL-FAJ-15',
+    botanicalName: 'Butia capitata',
+    commonName: 'Pindo Palm',
+    cultivar: null,
+    image: 'https://images.unsplash.com/photo-1596097635241-1f6b35e556b0?w=800&q=80',
+    price: 195,
+    containerSize: '15 gal',
+    overallHeight: '8 ft',
+    clearTrunkHeight: '4 ft',
+    status: 'active',
+  },
+  {
+    id: '6',
+    sku: 'PL-WEL-25',
+    botanicalName: 'Wodyetia bifurcata',
+    commonName: 'Foxtail Palm',
+    cultivar: null,
+    image: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&q=80',
+    price: 320,
+    containerSize: '25 gal',
+    overallHeight: '12 ft',
+    clearTrunkHeight: '6 ft',
+    status: 'active',
+  },
+];
+---
+
+<Layout
+  title={`${businessName} — Premium Agaves & Palm Trees | Hillsborough County, Florida`}
+  description="Premium agave plants and palm trees grown for Hillsborough County and the Tampa Bay region. Shop architectural agaves, specimen palms, landscape-ready plants, and bulk orders for professional projects."
+>
+  <Header cartCount={0} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-media">
+      <img
+        src="https://images.unsplash.com/photo-1582284540020-8acbe03f491a?w=1600&q=80"
+        alt="Architectural agave plants and palm trees in a Florida landscape"
+        class="hero-image"
+        width="1600"
+        height="900"
+        loading="eager"
+      />
+      <div class="hero-overlay" aria-hidden="true"></div>
+    </div>
+    <div class="hero-content container">
+      <p class="hero-eyebrow">Hillsborough County, Florida</p>
+      <h1 class="hero-heading">Agaves with presence. Palms with character.</h1>
+      <p class="hero-body">
+        Specimen agaves and mature palm trees grown for Florida landscapes — from container-sized architectural highlights to field-grown specimens for commercial projects.
+      </p>
+      <div class="hero-cta">
+        <a href="/shop/agaves" class="btn btn-primary">Explore Agaves</a>
+        <a href="/shop/palms" class="btn btn-secondary">Explore Palm Trees</a>
+      </div>
+      <p class="hero-note">Serving Tampa, Brandon, Riverview, Plant City, Valrico, Lutz, and Wesley Chapel.</p>
+    </div>
+  </section>
+
+  <!-- Product families intro -->
+  <section class="families-intro">
+    <div class="container">
+      <div class="families-grid">
+        <a href="/shop/agaves" class="family-card family-agave">
+          <div class="family-image">
+            <img
+              src="https://images.unsplash.com/photo-1511690656952-34342bb7c2f1?w=900&q=80"
+              alt="Agave victoriae-reginae — architectural agave rosette"
+              width="900"
+              height="600"
+              loading="lazy"
+            />
+          </div>
+          <div class="family-body">
+            <p class="family-eyebrow">Category A</p>
+            <h2 class="family-heading">Agave Plants</h2>
+            <p class="family-body-text">Architectural rosettes, specimen collector agaves, landscape-ready container stock, and large-format varieties for xeriscaping and modern Florida landscapes.</p>
+            <span class="family-link">View Agaves &rarr;</span>
+          </div>
+        </a>
+
+        <a href="/shop/palms" class="family-card family-palm">
+          <div class="family-image">
+            <img
+              src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?w=900&q=80"
+              alt="Mature palm trees with clean trunks in a Florida landscape"
+              width="900"
+              height="600"
+              loading="lazy"
+            />
+          </div>
+          <div class="family-body">
+            <p class="family-eyebrow">Category B</p>
+            <h2 class="family-heading">Palm Trees</h2>
+            <p class="family-body-text">Container-grown and field-grown palms, mature specimen palms with clear trunks, and bulk palm orders for residential and commercial landscape projects across the Tampa Bay region.</p>
+            <span class="family-link">View Palm Trees &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured agaves -->
+  <section class="featured-section" id="featured-agaves">
+    <div class="container">
+      <header class="section-header">
+        <p class="section-eyebrow">Featured Inventory</p>
+        <h2 class="section-heading">Featured Agaves</h2>
+        <p class="section-body">A rotating selection of architectural, specimen, and landscape-ready agaves currently in stock.</p>
+        <a href="/shop/agaves" class="section-link">See full agave catalog &rarr;</a>
+      </header>
+
+      <div class="product-grid">
+        {featuredAgaves.map((product) => (
+          <article class="product-card">
+            <a href={`/shop/agaves/${product.id}`} class="product-image-link" tabindex="-1" aria-hidden="true">
+              <div class="product-image-wrap">
+                <img
+                  src={product.image}
+                  alt={`${product.botanicalName}${product.commonName ? ` — ${product.commonName}` : ''}`}
+                  width="600"
+                  height="700"
+                  loading="lazy"
+                  class="product-image"
+                />
+                {product.status === 'sold_out' && (
+                  <span class="product-badge product-badge--sold-out">Sold Out</span>
+                )}
+              </div>
+            </a>
+            <div class="product-info">
+              <a href={`/shop/agaves/${product.id}`} class="product-title-link">
+                <h3 class="product-name">{product.botanicalName}</h3>
+                {product.commonName && <p class="product-common">{product.commonName}</p>}
+                {product.cultivar && <p class="product-cultivar">{product.cultivar}</p>}
+              </a>
+              <div class="product-meta">
+                <span class="product-size">{product.containerSize}</span>
+                <span class="product-spec">Rosette {product.rosetteDiameter}</span>
+              </div>
+              <div class="product-footer">
+                <span class="product-price">\${product.price}</span>
+                <a href={`/shop/agaves/${product.id}`} class="btn btn-sm btn-primary">View Plant</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Landscape inspiration -->
+  <section class="inspiration-section">
+    <div class="container">
+      <div class="inspiration-grid">
+        <div class="inspiration-media">
+          <img
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80"
+            alt="Agave and palm landscape composition in a Florida residential yard"
+            width="900"
+            height="600"
+            loading="lazy"
+          />
+        </div>
+        <div class="inspiration-body">
+          <p class="inspiration-eyebrow">Landscape Inspiration</p>
+          <h2 class="inspiration-heading">Plants built for the Florida landscape</h2>
+          <p class="inspiration-body-text">
+            Agaves bring architectural structure to modern and contemporary designs. Palms provide reliable vertical form, shade, and tropical presence without overwhelming a space.
+          </p>
+          <p class="inspiration-body-text">
+            The right combination depends on sun exposure, drainage, mature size, and the character of the surrounding landscape. Our guides cover selection by application, and our catalog filters by the attributes that matter.
+          </p>
+          <div class="inspiration-links">
+            <a href="/guides/hillsborough-plants" class="btn btn-secondary">Plants for Hillsborough County</a>
+            <a href="/guides" class="btn btn-outline">Browse All Guides</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured palms -->
+  <section class="featured-section featured-palms">
+    <div class="container">
+      <header class="section-header section-header--center">
+        <p class="section-eyebrow">Featured Inventory</p>
+        <h2 class="section-heading">Featured Palms</h2>
+        <p class="section-body">Container-grown and field-grown palms — from compact landscape specimens to mature palms for larger projects.</p>
+        <a href="/shop/palms" class="section-link">See full palm catalog &rarr;</a>
+      </header>
+
+      <div class="product-grid product-grid--2">
+        {featuredPalms.map((product) => (
+          <article class="product-card product-card--landscape">
+            <a href={`/shop/palms/${product.id}`} class="product-image-link" tabindex="-1" aria-hidden="true">
+              <div class="product-image-wrap">
+                <img
+                  src={product.image}
+                  alt={`${product.botanicalName}${product.commonName ? ` — ${product.commonName}` : ''}`}
+                  width="700"
+                  height="500"
+                  loading="lazy"
+                  class="product-image"
+                />
+              </div>
+            </a>
+            <div class="product-info">
+              <a href={`/shop/palms/${product.id}`} class="product-title-link">
+                <h3 class="product-name">{product.botanicalName}</h3>
+                {product.commonName && <p class="product-common">{product.commonName}</p>}
+              </a>
+              <div class="product-meta">
+                <span class="product-size">{product.containerSize}</span>
+                <span class="product-spec">{product.overallHeight} tall</span>
+              </div>
+              <div class="product-footer">
+                <span class="product-price">\${product.price}</span>
+                <a href={`/shop/palms/${product.id}`} class="btn btn-sm btn-primary">View Palm</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pathways -->
+  <section class="pathways-section">
+    <div class="container">
+      <header class="section-header section-header--center">
+        <p class="section-eyebrow">How to Buy</p>
+        <h2 class="section-heading">The right path for every buyer</h2>
+      </header>
+      <div class="pathways-grid">
+        <div class="pathway-card">
+          <div class="pathway-icon pathway-icon--residential" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          <h3 class="pathway-title">Homeowners</h3>
+          <p class="pathway-body">Shop individual agaves and palms online. Choose your size, check availability, and arrange pickup or delivery within Hillsborough County.</p>
+          <a href="/shop/agaves" class="pathway-link">Shop Plants</a>
+        </div>
+
+        <div class="pathway-card">
+          <div class="pathway-icon pathway-icon--pro" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.5 12.5L19 8M5 19l4-4 4 4M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3 class="pathway-title">Landscape Contractors</h3>
+          <p class="pathway-body">Trade accounts, consistent stock for ongoing projects, and bulk palm and agave orders. Contact us for trade pricing and availability.</p>
+          <a href="/wholesale" class="pathway-link">Wholesale &amp; Trade</a>
+        </div>
+
+        <div class="pathway-card">
+          <div class="pathway-icon pathway-icon--design" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h3 class="pathway-title">Architects &amp; Designers</h3>
+          <p class="pathway-body">Project quotes, specimen identification, and plant sourcing for planned landscapes. Tell us about your project and we will work with you on availability and delivery.</p>
+          <a href="/wholesale/project-inquiry" class="pathway-link">Project Inquiry</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Geographic focus -->
+  <section class="geo-section">
+    <div class="container">
+      <div class="geo-grid">
+        <div class="geo-media">
+          <img
+            src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&q=80"
+            alt="Florida palm trees against a clear sky"
+            width="800"
+            height="500"
+            loading="lazy"
+          />
+        </div>
+        <div class="geo-body">
+          <p class="geo-eyebrow">Our Market</p>
+          <h2 class="geo-heading">Hillsborough County, Florida</h2>
+          <p class="geo-body-text">
+            We are focused on Hillsborough County as our primary market — including Tampa, Brandon, Riverview, Plant City, Valrico, Lutz, and Wesley Chapel — with regional delivery available to surrounding counties upon request.
+          </p>
+          <p class="geo-body-text">
+            Delivery and pickup options are configured based on verified business capabilities. Large specimens, field-grown palms, and bulk orders may require a custom quote.
+          </p>
+          <div class="geo-list">
+            <span class="geo-chip">Hillsborough County — Primary</span>
+            <span class="geo-chip geo-chip--secondary">Pasco County</span>
+            <span class="geo-chip geo-chip--secondary">Pinellas County</span>
+            <span class="geo-chip geo-chip--secondary">Polk County</span>
+            <span class="geo-chip geo-chip--secondary">Manatee County</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Educational content -->
+  <section class="education-section">
+    <div class="container">
+      <header class="section-header section-header--center">
+        <p class="section-eyebrow">Plant Guides</p>
+        <h2 class="section-heading">Learn before you plant</h2>
+        <p class="section-body">Practical guidance on agave selection, palm sizing, Florida conditions, and landscape application.</p>
+      </header>
+
+      <div class="guides-grid">
+        <a href="/guides/agave-care" class="guide-card">
+          <div class="guide-image">
+            <img src="https://images.unsplash.com/photo-1511690656952-34342bb7c2f1?w=600&q=80" alt="Agave rosette close-up" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="guide-body">
+            <p class="guide-eyebrow">Agave Care</p>
+            <h3 class="guide-title">Agave selection and care for Florida landscapes</h3>
+            <p class="guide-excerpt">Sun exposure, drainage, cold tolerance, sizing, and what to expect as agaves establish in Hillsborough County conditions.</p>
+          </div>
+        </a>
+
+        <a href="/guides/palm-care" class="guide-card">
+          <div class="guide-image">
+            <img src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?w=600&q=80" alt="Mature palm tree" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="guide-body">
+            <p class="guide-eyebrow">Palm Care</p>
+            <h3 class="guide-title">Understanding palm height, clear trunk, and mature size</h3>
+            <p class="guide-excerpt">How to read palm measurements, what to expect as palms grow, and which species suit different Florida landscape situations.</p>
+          </div>
+        </a>
+
+        <a href="/guides/hillsborough-plants" class="guide-card">
+          <div class="guide-image">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Florida landscape with palms" width="600" height="400" loading="lazy" />
+          </div>
+          <div class="guide-body">
+            <p class="guide-eyebrow">Local Guide</p>
+            <h3 class="guide-title">Plants for Hillsborough County landscapes</h3>
+            <p class="guide-excerpt">Selection guidance for residential and commercial properties across Tampa, Brandon, Plant City, and the surrounding county.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ----- Hero ----- */
+  .hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-media {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(24, 61, 44, 0.85) 0%,
+      rgba(24, 61, 44, 0.55) 50%,
+      rgba(24, 61, 44, 0.25) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    padding: var(--space-20) 0 var(--space-20);
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      min-height: auto;
+    }
+    .hero-content {
+      padding: var(--space-12) 0 var(--space-16);
+    }
+  }
+
+  .hero-eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-sage);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero-heading {
+    font-size: clamp(var(--text-4xl), 6vw, var(--text-6xl));
+    font-weight: var(--font-bold);
+    color: var(--color-white);
+    margin-bottom: var(--space-5);
+    line-height: 1.05;
+  }
+
+  .hero-body {
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    color: rgba(245, 242, 233, 0.88);
+    margin-bottom: var(--space-8);
+    max-width: 560px;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    line-height: 1;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background-color: var(--color-white);
+    color: var(--color-green-deep);
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus-visible {
+    background-color: var(--color-limestone);
+    color: var(--color-green-deep);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 1px solid rgba(245, 242, 233, 0.4);
+  }
+
+  .btn-secondary:hover,
+  .btn-secondary:focus-visible {
+    background-color: rgba(245, 242, 233, 0.12);
+    border-color: rgba(245, 242, 233, 0.6);
+    color: var(--color-white);
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: var(--color-green-deep);
+    border: 1px solid var(--color-green-deep);
+  }
+
+  .btn-outline:hover,
+  .btn-outline:focus-visible {
+    background-color: var(--color-green-deep);
+    color: var(--color-white);
+  }
+
+  .btn-sm {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+  }
+
+  .hero-note {
+    font-size: var(--text-sm);
+    color: rgba(245, 242, 233, 0.55);
+  }
+
+  /* ----- Section base ----- */
+  .section-header {
+    text-align: left;
+    margin-bottom: var(--space-10);
+  }
+
+  .section-header--center {
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .section-eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-sage);
+    margin-bottom: var(--space-3);
+  }
+
+  .section-heading {
+    font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
+    color: var(--color-green-deep);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-body {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    max-width: 580px;
+  }
+
+  .section-link {
+    display: inline-block;
+    margin-top: var(--space-5);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-green-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-green-deep);
+    padding-bottom: 1px;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .section-link:hover,
+  .section-link:focus-visible {
+    color: var(--color-charcoal);
+    border-color: var(--color-charcoal);
+  }
+
+  .container {
+    width: 100%;
+    max-width: var(--max-width-content);
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+  }
+
+  /* ----- Families ----- */
+  .families-intro {
+    padding: var(--space-16) 0;
+    background-color: var(--color-limestone);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .families-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 900px) {
+    .families-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+    }
+  }
+
+  .family-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+  }
+
+  .family-card:hover,
+  .family-card:focus-visible {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .family-image {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background-color: var(--color-charcoal);
+  }
+
+  .family-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .family-card:hover .family-image img,
+  .family-card:focus-visible .family-image img {
+    transform: scale(1.03);
+  }
+
+  .family-body {
+    padding: var(--space-6);
+  }
+
+  .family-eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-sage);
+    margin-bottom: var(--space-2);
+  }
+
+  .family-heading {
+    font-size: var(--text-2xl);
+    color: var(--color-green-deep);
+    margin-bottom: var(--space-3);
+  }
+
+  .family-body-text {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    margin-bottom: var(--space-4);
+  }
+
+  .family-link {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-green-deep);
+  }
+
+  /* ----- Featured sections ----- */
+  .featured-section {
+    padding: var(--space-16) 0;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 640px) {
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 900px) {
+    .product-grid--2 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .product-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+  }
+
+  .product-card:hover,
+  .product-card:focus-within {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .product-image-link {
+    display: block;
+    text-decoration: none;
+  }
+
+  .product-image-wrap {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background-color: var(--color-limestone);
+  }
+
+  .product-card--landscape .product-image-wrap {
+    aspect-ratio: 5 / 3;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .product-card:hover .product-image,
+  .product-card:focus-within .product-image {
+    transform: scale(1.04);
+  }
+
+  .product-badge {
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    border-radius: var(--radius-full);
+    background-color: var(--color-charcoal);
+    color: var(--color-white);
+  }
+
+  .product-badge--sold-out {
+    background-color: var(--color-text-muted);
+  }
+
+  .product-info {
+    padding: var(--space-5);
+  }
+
+  .product-title-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+
+  .product-name {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--color-green-deep);
+    line-height: 1.3;
+    margin-bottom: var(--space-1);
+  }
+
+  .product-common {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .product-cultivar {
+    font-size: var(--text-xs);
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-top: var(--space-1);
+  }
+
+  .product-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  .product-size {
+    font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+    padding: 2px var(--space-2);
+    background-color: var(--color-limestone);
+    border-radius: var(--radius-sm);
+  }
+
+  .product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .product-price {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--color-green-deep);
+    font-family: var(--font-serif);
+  }
+
+  /* ----- Inspiration ----- */
+  .inspiration-section {
+    padding: var(--space-16) 0;
+    background-color: var(--color-green-deep);
+  }
+
+  .inspiration-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .inspiration-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+    }
+  }
+
+  .inspiration-media {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background-color: var(--color-charcoal);
+  }
+
+  .inspiration-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .inspiration-eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-sage);
+    margin-bottom: var(--space-3);
+  }
+
+  .inspiration-heading {
+    font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+    color: var(--color-white);
+    margin-bottom: var(--space-5);
+    line-height: 1.15;
+  }
+
+  .inspiration-body-text {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: rgba(245, 242, 233, 0.78);
+    margin-bottom: var(--space-4);
+  }
+
+  .inspiration-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  .inspiration-section .btn-secondary {
+    border-color: rgba(245, 242, 233, 0.4);
+  }
+
+  .inspiration-section .btn-secondary:hover,
+  .inspiration-section .btn-secondary:focus-visible {
+    background-color: rgba(245, 242, 233, 0.12);
+  }
+
+  /* ----- Pathways ----- */
+  .pathways-section {
+    padding: var(--space-16) 0;
+    background-color: var(--color-limestone);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .pathways-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .pathways-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .pathway-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow var(--transition-base), transform var(--transition-base), border-color var(--transition-base);
+    display: block;
+  }
+
+  .pathway-card:hover,
+  .pathway-card:focus-visible {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: var(--color-sage);
+  }
+
+  .pathway-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-5);
+  }
+
+  .pathway-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pathway-icon--residential {
+    background-color: rgba(41, 79, 59, 0.1);
+    color: var(--color-green-forest);
+  }
+
+  .pathway-icon--pro {
+    background-color: rgba(216, 185, 137, 0.15);
+    color: var(--color-sand);
+  }
+
+  .pathway-icon--design {
+    background-color: rgba(183, 197, 165, 0.2);
+    color: var(--color-sage);
+  }
+
+  .pathway-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    color: var(--color-green-deep);
+    margin-bottom: var(--space-3);
+  }
+
+  .pathway-body {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    margin-bottom: var(--space-5);
+  }
+
+  .pathway-link {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-green-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-green-deep);
+    padding-bottom: 1px;
+  }
+
+  .pathway-card:hover .pathway-link,
+  .pathway-card:focus-visible .pathway-link {
+    color: var(--color-charcoal);
+    border-color: var(--color-charcoal);
+  }
+
+  /* ----- Geo ----- */
+  .geo-section {
+    padding: var(--space-16) 0;
+  }
+
+  .geo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .geo-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+    }
+  }
+
+  .geo-media {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background-color: var(--color-charcoal);
+  }
+
+  .geo-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .geo-eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-sage);
+    margin-bottom: var(--space-3);
+  }
+
+  .geo-heading {
+    font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+    color: var(--color-green-deep);
+    margin-bottom: var(--space-5);
+    line-height: 1.15;
+  }
+
+  .geo-body-text {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-5);
+  }
+
+  .geo-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .geo-chip {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-full);
+    background-color: var(--color-green-deep);
+    color: var(--color-white);
+  }
+
+  .geo-chip--secondary {
+    background-color: rgba(41, 79, 59, 0.12);
+    color: var(--color-green-forest);
+  }
+
+  /* ----- Education ----- */
+  .education-section {
+    padding: var(--space-16) 0;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .guides-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .guides-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .guides-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .guide-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: box-shadow var(--transition-base), transform var(--transition-base), border-color var(--transition-base);
+  }
+
+  .guide-card:hover,
+  .guide-card:focus-visible {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: var(--color-sage);
+  }
+
+  .guide-image {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background-color: var(--color-limestone);
+  }
+
+  .guide-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .guide-card:hover .guide-image img,
+  .guide-card:focus-visible .guide-image img {
+    transform: scale(1.03);
+  }
+
+  .guide-body {
+    padding: var(--space-5);
+  }
+
+  .guide-eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-sage);
+    margin-bottom: var(--space-2);
+  }
+
+  .guide-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    color: var(--color-green-deep);
+    line-height: 1.3;
+    margin-bottom: var(--space-3);
+  }
+
+  .guide-excerpt {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+  }
+</style>

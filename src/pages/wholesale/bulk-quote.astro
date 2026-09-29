@@ -1,0 +1,288 @@
+---
+// src/pages/wholesale/bulk-quote.astro
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const businessName = import.meta.env['PUBLIC_BUSINESS_NAME'] || 'Palm & Agave Nursery';
+---
+
+<Layout
+  title={`Bulk Order Quote — ${businessName}`}
+  description="Request a bulk quote for agaves, palm trees, or a mix of both. For landscape contractors, developers, designers, and commercial projects in Hillsborough County and the Tampa Bay region."
+>
+  <Header cartCount={0} />
+
+  <div class="bulk-page">
+    <section class="bulk-hero">
+      <div class="bulk-hero-media">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80" alt="Commercial landscape project" width="1400" height="400" loading="eager" class="bulk-hero-image" />
+        <div class="bulk-hero-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="bulk-hero-content container">
+        <p class="bulk-eyebrow">Bulk Orders &amp; Project Quotes</p>
+        <h1 class="bulk-heading">Request a bulk quote</h1>
+        <p class="bulk-body">
+          Tell us what you need — species, sizes, quantities, delivery location, and timing. We will review your request and follow up with availability and pricing.
+        </p>
+      </div>
+    </section>
+
+    <div class="bulk-body container">
+      <div class="bulk-grid">
+        <div class="bulk-info">
+          <div class="bulk-info-card">
+            <h2 class="bulk-info-title">What this form is for</h2>
+            <p class="bulk-info-body">
+              Use this form for bulk plant orders, project quotes, and trade inquiries that need a custom response. It is not an order form — nothing is committed until we confirm with you.
+            </p>
+          </div>
+          <div class="bulk-info-card">
+            <h2 class="bulk-info-title">What to include</h2>
+            <ul class="bulk-info-list">
+              <li>The plants you are interested in — species, sizes, quantities</li>
+              <li>Your delivery location or pickup preference</li>
+              <li>Your project timeline</li>
+              <li>Any special requirements — access, delivery equipment, staged delivery</li>
+            </ul>
+          </div>
+          <div class="bulk-info-card">
+            <h2 class="bulk-info-title">What happens next</h2>
+            <p class="bulk-info-body">
+              We review your request and follow up directly. For straightforward requests we may be able to respond quickly. For larger or more complex projects, we may need to discuss details before preparing a quote.
+            </p>
+          </div>
+        </div>
+
+        <div class="bulk-form-card">
+          <h2 class="bulk-form-title">Bulk Quote Request</h2>
+          <form class="bulk-form" novalidate>
+            <div class="form-field">
+              <label class="form-label" for="inquiry-type">Inquiry Type <span class="form-required">*</span></label>
+              <select id="inquiry-type" class="form-select" required>
+                <option value="">Select one...</option>
+                <option value="bulk">Bulk Plant Order</option>
+                <option value="project">Project Quote</option>
+                <option value="wholesale">Wholesale Account Inquiry</option>
+                <option value="trade">Trade Account Application</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="subject">Subject <span class="form-required">*</span></label>
+              <input id="subject" type="text" class="form-input" placeholder="Brief summary of your request" required />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="full-name">Full Name <span class="form-required">*</span></label>
+              <input id="full-name" type="text" class="form-input" placeholder="Your full name" required />
+            </div>
+
+            <div class="form-row form-row--2">
+              <div class="form-field">
+                <label class="form-label" for="email">Email Address <span class="form-required">*</span></label>
+                <input id="email" type="email" class="form-input" placeholder="you@company.com" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="phone">Phone Number</label>
+                <input id="phone" type="tel" class="form-input" placeholder="(813) 555-0100" />
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="business">Business / Company <span class="form-optional">(optional)</span></label>
+              <input id="business" type="text" class="form-input" placeholder="Your company or business name, if applicable" />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="project-desc">Project Description</label>
+              <textarea id="project-desc" class="form-textarea" rows="4" placeholder="Describe the project or order — property type, design intent, approximate size, and anything else that helps us understand what you need."></textarea>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="requested-products">Requested Products</label>
+              <textarea
+                id="requested-products"
+                class="form-textarea"
+                rows="5"
+                placeholder="List the plants you are interested in. For example:&#10;&#10;Agave victoriae-reginae — 15 gal — qty 6&#10;Trachycarpus fortunei — 7 gal — qty 10&#10;Wodyetia bifurcata — 25 gal — qty 3&#10;&#10;Include species, size, and quantity for each."
+              ></textarea>
+            </div>
+
+            <div class="form-row form-row--2">
+              <div class="form-field">
+                <label class="form-label" for="delivery-city">Delivery City</label>
+                <input id="delivery-city" type="text" class="form-input" placeholder="Tampa, Brandon, etc." />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="delivery-county">County</label>
+                <select id="delivery-county" class="form-select">
+                  <option value="">Select...</option>
+                  <option value="hillsborough">Hillsborough</option>
+                  <option value="pasco">Pasco</option>
+                  <option value="pinellas">Pinellas</option>
+                  <option value="polk">Polk</option>
+                  <option value="manatee">Manatee</option>
+                  <option value="hernando">Hernando</option>
+                  <option value="sarasota">Sarasota</option>
+                  <option value="other">Other / Not sure</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="timeline">Project Timeline</label>
+              <select id="timeline" class="form-select">
+                <option value="">Select...</option>
+                <option value="asap">As soon as possible</option>
+                <option value="2-4">2–4 weeks</option>
+                <option value="1-3-months">1–3 months</option>
+                <option value="3-6-months">3–6 months</option>
+                <option value="tbd">Not sure yet</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="budget">Budget Range <span class="form-optional">(optional)</span></label>
+              <select id="budget" class="form-select">
+                <option value="">Prefer not to say</option>
+                <option value="under-500">Under $500</option>
+                <option value="500-2000">$500–$2,000</option>
+                <option value="2000-5000">$2,000–$5,000</option>
+                <option value="5000-15000">$5,000–$15,000</option>
+                <option value="15000-plus">$15,000+</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="notes">Additional Notes <span class="form-optional">(optional)</span></label>
+              <textarea id="notes" class="form-textarea" rows="3" placeholder="Anything else we should know — access constraints, delivery equipment, preferred contact method, or questions you have."></textarea>
+            </div>
+
+            <div class="form-field checkbox-field">
+              <label class="checkbox-label checkbox-label--large">
+                <input type="checkbox" name="consent" class="checkbox-input" required />
+                <span>
+                  I understand this is a quote request, not an order. I agree to be contacted about my request and to provide any additional information needed to prepare a quote.
+                </span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Quote Request</button>
+
+            <p class="bulk-form-note">
+              We review every request manually. For straightforward bulk orders, we may respond with availability and pricing. For project quotes, we may follow up with questions before preparing a written quote.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Simple frontend validation feedback
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('.bulk-form');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const required = form.querySelectorAll('[required]');
+      let firstInvalid = null;
+
+      required.forEach(field => {
+        field.style.borderColor = '';
+        if (!field.value || (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value))) {
+          field.style.borderColor = 'var(--color-danger)';
+          if (!firstInvalid) firstInvalid = field;
+        }
+      });
+
+      const consent = form.querySelector('[name="consent"]');
+      if (!consent?.checked) {
+        consent.closest('.checkbox-field').style.borderColor = 'var(--color-danger)';
+        if (!firstInvalid) firstInvalid = consent.closest('.checkbox-field');
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      // Dev-mode success message
+      const btn = form.querySelector('button[type="submit"]');
+      const orig = btn.textContent;
+      btn.textContent = 'Request Submitted';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.textContent = '✓ Request Submitted';
+        btn.classList.add('btn-success');
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.disabled = false;
+          btn.classList.remove('btn-success');
+          form.reset();
+          form.querySelectorAll('[style*="border-color"]').forEach(el => el.style.borderColor = '');
+        }, 2500);
+      }, 500);
+    });
+  });
+</script>
+
+<style>
+  .bulk-page { padding-bottom: var(--space-16); }
+
+  .bulk-hero { position: relative; padding: var(--space-12) 0; overflow: hidden; }
+  .bulk-hero-media { position: absolute; inset: 0; }
+  .bulk-hero-image { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+  .bulk-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(24,61,44,0.92) 0%, rgba(24,61,44,0.5) 60%, rgba(24,61,44,0.15) 100%); }
+  .bulk-hero-content { position: relative; z-index: 1; max-width: 640px; padding: var(--space-12) 0; }
+  @media (max-width: 640px) { .bulk-hero { padding: var(--space-10) 0; } .bulk-hero-content { padding: var(--space-10) 0; } }
+  .bulk-eyebrow { font-size: var(--text-xs); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-sage); margin-bottom: var(--space-3); }
+  .bulk-heading { font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); color: var(--color-white); margin-bottom: var(--space-4); line-height: 1.1; }
+  .bulk-body { font-size: var(--text-lg); line-height: 1.65; color: rgba(245,242,233,0.82); }
+
+  .bulk-body { padding-top: var(--space-10); }
+  .bulk-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-10); align-items: start; }
+  @media (min-width: 900px) { .bulk-grid { grid-template-columns: 320px 1fr; gap: var(--space-12); } }
+
+  .bulk-info { display: flex; flex-direction: column; gap: var(--space-4); }
+  .bulk-info-card { padding: var(--space-5); background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+  .bulk-info-title { font-family: var(--font-sans); font-size: var(--text-xs); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-sage); margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
+  .bulk-info-body { font-size: var(--text-sm); line-height: 1.65; color: var(--color-text-secondary); }
+  .bulk-info-list { list-style: none; padding: 0; margin: var(--space-4) 0 0; display: flex; flex-direction: column; gap: var(--space-2); }
+  .bulk-info-list li { font-size: var(--text-sm); color: var(--color-text-secondary); padding-left: var(--space-4); position: relative; }
+  .bulk-info-list li::before { content: '•'; position: absolute; left: 0; color: var(--color-sage); }
+
+  .bulk-form-card { padding: var(--space-6); background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+  .bulk-form-title { font-family: var(--font-serif); font-size: var(--text-xl); color: var(--color-green-deep); margin-bottom: var(--space-5); }
+
+  .bulk-form { display: flex; flex-direction: column; gap: var(--space-4); }
+  .form-field { display: flex; flex-direction: column; gap: var(--space-2); }
+  .form-row { display: grid; gap: var(--space-4); }
+  .form-row--2 { grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .form-row--2 { grid-template-columns: 1fr 1fr; } }
+  .form-label { font-size: var(--text-sm); font-weight: var(--font-medium); color: var(--color-text-secondary); }
+  .form-optional { font-weight: var(--font-normal); color: var(--color-text-muted); font-size: var(--text-xs); }
+  .form-required { color: var(--color-danger); font-weight: var(--font-semibold); font-size: var(--text-xs); margin-left: var(--space-1); }
+  .form-input, .form-select, .form-textarea { padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); font-size: var(--text-base); color: var(--color-text-primary); background-color: var(--color-surface); transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(24,61,44,0.12); }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--color-text-muted); }
+  .form-textarea { resize: vertical; min-height: 80px; }
+
+  .checkbox-field { padding-top: var(--space-3); border-top: 1px solid var(--color-border); }
+  .checkbox-label { display: flex; align-items: flex-start; gap: var(--space-3); font-size: var(--text-sm); color: var(--color-text-secondary); cursor: pointer; line-height: 1.5; }
+  .checkbox-label--large { font-size: var(--text-base); color: var(--color-text-primary); }
+  .checkbox-input { accent-color: var(--color-green-deep); width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; }
+
+  .btn-success { background-color: var(--color-success); color: var(--color-white); }
+  .btn-block { display: block; width: 100%; text-align: center; }
+  .bulk-form-note { font-size: var(--text-xs); color: var(--color-text-muted); text-align: center; line-height: 1.6; margin: 0; }
+
+  .btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+</style>

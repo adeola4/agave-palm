@@ -1,0 +1,280 @@
+---
+// src/components/Header.astro
+interface Props {
+  cartCount?: number;
+}
+
+const { cartCount = 0 } = Astro.props;
+const businessName = import.meta.env['PUBLIC_BUSINESS_NAME'] || 'Palm & Agave Nursery';
+---
+
+<header class="site-header">
+  <div class="header-inner container">
+    <a href="/" class="brand" aria-label={businessName}>
+      <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12 12-5.373 12-12S22.627 4 16 4z" fill="currentColor" opacity="0.15"/>
+        <path d="M16 8c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8z" fill="currentColor" opacity="0.25"/>
+        <path d="M16 12c-2.209 0-4 1.791-4 4s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4z" fill="var(--color-green-deep)"/>
+      </svg>
+      <span class="brand-name">{businessName}</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="/shop/agaves" class="nav-link">Shop Agaves</a>
+      <a href="/shop/palms" class="nav-link">Shop Palm Trees</a>
+      <a href="/guides" class="nav-link">Plant Guides</a>
+      <a href="/wholesale" class="nav-link">Wholesale &amp; Trade</a>
+      <a href="/about" class="nav-link">About</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-button" type="button" aria-label="Search" data-search-button>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m21 21-4.3-4.3"/>
+        </svg>
+      </button>
+
+      <a href="/account" class="icon-button" aria-label="Account">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M20 21a8 8 0 1 0-16 0"/>
+        </svg>
+      </a>
+
+      <a href="/cart" class="cart-button" aria-label="Cart" data-cart-button>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+          <path d="M3 6h18"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        {cartCount > 0 ? <span class="cart-badge" aria-label={`${cartCount} items in cart`}>{cartCount}</span> : null}
+      </a>
+
+      <button class="icon-button mobile-menu-button" type="button" aria-label="Open menu" aria-expanded="false" data-menu-button>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="4" x2="20" y1="12" y2="12"/>
+          <line x1="4" x2="20" y1="6" y2="6"/>
+          <line x1="4" x2="20" y1="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <nav class="nav-mobile" data-mobile-menu aria-label="Mobile">
+    <div class="container">
+      <a href="/shop/agaves" class="mobile-nav-link">Shop Agaves</a>
+      <a href="/shop/palms" class="mobile-nav-link">Shop Palm Trees</a>
+      <a href="/guides" class="mobile-nav-link">Plant Guides</a>
+      <a href="/wholesale" class="mobile-nav-link">Wholesale &amp; Trade</a>
+      <a href="/about" class="mobile-nav-link">About</a>
+      <hr class="mobile-nav-divider" />
+      <a href="/account" class="mobile-nav-link">Account</a>
+      <a href="/cart" class="mobile-nav-link">Cart {cartCount > 0 ? `(${cartCount})` : ''}</a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background-color: rgba(245, 242, 233, 0.92);
+    backdrop-filter: saturate(140%) blur(8px);
+    -webkit-backdrop-filter: saturate(140%) blur(8px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    height: 68px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+  }
+
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+    color: var(--color-green-deep);
+  }
+
+  .brand-name {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin-left: var(--space-4);
+  }
+
+  @media (max-width: 900px) {
+    .nav-desktop {
+      display: none;
+    }
+  }
+
+  .nav-link {
+    position: relative;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--space-3);
+    right: var(--space-3);
+    height: 1px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-base);
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    color: var(--color-text-primary);
+    background-color: rgba(38, 41, 35, 0.06);
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin-left: auto;
+  }
+
+  .icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .icon-button:hover,
+  .icon-button:focus-visible {
+    color: var(--color-text-primary);
+    background-color: rgba(38, 41, 35, 0.06);
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .cart-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .cart-button:hover,
+  .cart-button:focus-visible {
+    color: var(--color-text-primary);
+    background-color: rgba(38, 41, 35, 0.06);
+  }
+
+  .cart-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 var(--space-1);
+    border-radius: var(--radius-full);
+    background-color: var(--color-green-deep);
+    color: var(--color-white);
+    font-size: 11px;
+    font-weight: var(--font-semibold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .mobile-menu-button {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .mobile-menu-button {
+      display: inline-flex;
+    }
+  }
+
+  .nav-mobile {
+    display: none;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-background);
+  }
+
+  .nav-mobile.is-open {
+    display: block;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: var(--space-4) var(--container-padding);
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .mobile-nav-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .nav-mobile {
+      display: none;
+    }
+    .nav-mobile.is-open {
+      display: block;
+    }
+  }
+
+  .mobile-nav-divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: var(--space-2) 0;
+  }
+</style>

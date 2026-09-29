@@ -1,0 +1,9 @@
+# Tell search engines this is a real site
+User-agent: *
+Allow: /
+
+# Host
+Host: https://palm-agate-nursery.vercel.app
+
+# Sitemap
+Sitemap: https://palm-agate-nursery.vercel.app/sitemap.xml
